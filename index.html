@@ -7,7 +7,7 @@
 
 <style>
 :root {
-  --Puderkék: #F28C28;
+  --Puderkék: #4a4a4a;
   --fehérfust: #F2F2F2; 
   --fekete: #4A4A4A;
   --krem: #A7C7E7;
@@ -24,11 +24,16 @@ body {
 
 header {
   padding: 80px 10%;
-  background: linear-gradient(135deg, var(--Puderkék), #E8E2FF);
+  background-color: #E8E2FF; /* világos lila a gradient helyett */
+  color: var(--fekete); /* biztos, hogy a szöveg látható */
 }
 
+
+
+
+
 header h1 {
-  font-size: 42px;
+  font-size: 80px;
   margin-bottom: 16px;
 }
 
@@ -64,7 +69,7 @@ section {
 
 .section-title {
   font-size: 32px;
-  margin-bottom: 40px;
+  margin-bottom: 90px;
 }
 
 .cards {
@@ -190,21 +195,21 @@ footer {
     <div class="card accordion" onclick="toggleAccordion(this)">
       Modern flottakezelés
       <div class="accordion-content">
-        <!-- Ide írhatod a saját tartalmat -->
+        <!-- A Rebeka a Világ legjobb Baratnöje -->
       </div>
     </div>
 
     <div class="card accordion" onclick="toggleAccordion(this)">
       Valós idejű nyomon követés
       <div class="accordion-content">
-        <!-- Ide írhatod a saját tartalmat -->
+        <!-- Szeretlek rebeka -->
       </div>
     </div>
 
     <div class="card accordion" onclick="toggleAccordion(this)">
       Tapasztalt csapat
       <div class="accordion-content">
-        <!-- Ide írhatod a saját tartalmat -->
+        <!-- szeretlek cicám -->
       </div>
     </div>
   </div>
