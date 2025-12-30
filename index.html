@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Modern Szállítmányozás</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --Puderkék: #F28C28;
+  --fehérfust: #F2F2F2; 
+  --fekete: #4A4A4A;
+  --krem: #A7C7E7;
+
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: var(--krem);
+  color: var(--fekete);
+}
+
+header {
+  padding: 80px 10%;
+  background: linear-gradient(135deg, var(--lila), #E8E2FF);
+}
+
+header h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+header p {
+  font-size: 18px;
+  max-width: 600px;
+}
+
+.cta-buttons {
+  margin-top: 30px;
+}
+
+.cta-btn {
+  background: var(--fekete);
+  color: var(--krem);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.cta-btn.alt {
+  background: var(--krem);
+  color: var(--fekete);
+  border: 1px solid var(--fekete);
+}
+
+section {
+  padding: 70px 10%;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.slide-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  background: white;
+  border-radius: 18px;
+  margin-top: 30px;
+  padding: 0 24px;
+}
+
+.slide-panel.open {
+  max-height: 700px;
+  padding: 30px 24px;
+}
+
+.slide-panel h3 {
+  color: var(--lila-soft);
+  margin-bottom: 20px;
+}
+
+.slide-panel input,
+.slide-panel textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--fekete);
+}
+
+footer {
+  background: var(--fekete);
+  color: var(--krem);
+  padding: 40px 10%;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Modern szállítmányozás, biztos kezekben</h1>
+  <p>Belföldi és nemzetközi logisztikai megoldások gyorsan, megbízhatóan, modern rendszerrel.</p>
+
+  <div class="cta-buttons">
+    <button class="cta-btn" onclick="togglePanel('quote')">Árajánlat kérése</button>
+    <button class="cta-btn alt" onclick="togglePanel('time')">Időpont foglalás</button>
+  </div>
+
+  <div id="quote" class="slide-panel">
+    <h3>Árajánlat igénylés</h3>
+    <input placeholder="Név / Cégnév">
+    <input placeholder="Email">
+    <input placeholder="Telefonszám">
+    <input placeholder="Indulási hely">
+    <input placeholder="Érkezési hely">
+    <textarea placeholder="Megjegyzés"></textarea>
+    <button class="cta-btn">Küldés</button>
+  </div>
+
+  <div id="time" class="slide-panel">
+    <h3>Időpont foglalás</h3>
+    <input type="date">
+    <input type="time">
+    <input placeholder="Név">
+    <input placeholder="Email">
+    <button class="cta-btn">Foglalás</button>
+  </div>
+</header>
+
+<section>
+  <h2 class="section-title">Szolgáltatásaink</h2>
+  <div class="cards">
+    <div class="card">Belföldi szállítmányozás</div>
+    <div class="card">Nemzetközi fuvarozás</div>
+    <div class="card">Raktározás</div>
+    <div class="card">Expressz kiszállítás</div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Miért minket válasszon?</h2>
+  <div class="cards">
+    <div class="card">Modern flottakezelés</div>
+    <div class="card">Valós idejű nyomon követés</div>
+    <div class="card">Tapasztalt csapat</div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Szállítmányozási Központ · Minden jog fenntartva
+</footer>
+
+<script>
+function togglePanel(id) {
+  document.querySelectorAll('.slide-panel').forEach(p => {
+    if (p.id !== id) p.classList.remove('open');
+  });
+  document.getElementById(id).classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
