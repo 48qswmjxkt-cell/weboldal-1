@@ -7,7 +7,7 @@
 
 <style>
 :root {
-  --Puderkék: #4a4a4a;
+  --Puderkék: #F28C28;
   --fehérfust: #F2F2F2; 
   --fekete: #4A4A4A;
   --krem: #A7C7E7;
@@ -24,16 +24,12 @@ body {
 
 header {
   padding: 80px 10%;
-  background-color: #E8E2FF; /* világos lila a gradient helyett */
-  color: var(--fekete); /* biztos, hogy a szöveg látható */
+  background-color: var(--Puderkék); /* fix szín, nincs átmenet */
+  color: var(--fekete);
 }
 
-
-
-
-
 header h1 {
-  font-size: 80px;
+  font-size: 42px;
   margin-bottom: 16px;
 }
 
@@ -69,7 +65,7 @@ section {
 
 .section-title {
   font-size: 32px;
-  margin-bottom: 90px;
+  margin-bottom: 40px;
 }
 
 .cards {
@@ -99,21 +95,20 @@ section {
 }
 
 .accordion-content {
-  max-height: 0;
+  max-height: 0; /* alapból rejtve */
   overflow: hidden;
-  transition: max-height 0.5s ease, padding 0.5s ease;
   margin-top: 16px;
+  padding: 0;
 }
 
 .card.accordion.open .accordion-content {
-  max-height: 500px;
+  max-height: 500px; /* kattintásra nyitva */
   padding-top: 16px;
 }
 
 .slide-panel {
-  max-height: 0;
+  max-height: 0; /* alapból rejtve */
   overflow: hidden;
-  transition: max-height 0.5s ease, padding 0.5s ease;
   background: white;
   border-radius: 18px;
   margin-top: 30px;
@@ -121,7 +116,7 @@ section {
 }
 
 .slide-panel.open {
-  max-height: 700px;
+  max-height: 700px; /* kattintásra nyitva */
   padding: 30px 24px;
 }
 
@@ -195,21 +190,21 @@ footer {
     <div class="card accordion" onclick="toggleAccordion(this)">
       Modern flottakezelés
       <div class="accordion-content">
-        A Rebeka a Világ legjobb Baratnöje 
+        A Rebeka a világ legjobb barátnője
       </div>
     </div>
 
     <div class="card accordion" onclick="toggleAccordion(this)">
       Valós idejű nyomon követés
       <div class="accordion-content">
-          Szeretlek rebeka 
+        Szeretlek Rebeka
       </div>
     </div>
 
     <div class="card accordion" onclick="toggleAccordion(this)">
       Tapasztalt csapat
       <div class="accordion-content">
-         szeretlek cicám
+        szeretlek cicám
       </div>
     </div>
   </div>
@@ -221,10 +216,8 @@ footer {
 
 <script>
 function togglePanel(id) {
-  document.querySelectorAll('.slide-panel').forEach(p => {
-    if (p.id !== id) p.classList.remove('open');
-  });
-  document.getElementById(id).classList.toggle('open');
+  const panel = document.getElementById(id);
+  panel.classList.toggle('open');
 }
 
 function toggleAccordion(element) {
