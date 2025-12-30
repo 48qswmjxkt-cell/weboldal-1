@@ -7,10 +7,10 @@
 
 <style>
 :root {
-  --narancs: #F28C28;
-  --vilagos: #F2F2F2; 
-  --sotet: #9AA0A6;
-  --kek: #A7C7E7;
+  --Puderkék: #F28C28;
+  --fehérfust: #F2F2F2; 
+  --fekete: #4A4A4A;
+  --krem: #A7C7E7;
 }
 
 * { box-sizing: border-box; }
@@ -18,13 +18,13 @@
 body {
   margin: 0;
   font-family: Inter, Arial, sans-serif;
-  background: var(--kek);
-  color: var(--sotet);
+  background: var(--krem);
+  color: var(--fekete);
 }
 
 header {
   padding: 80px 10%;
-  background: linear-gradient(135deg, var(--narancs), #FFD9B3);
+  background: linear-gradient(135deg, var(--Puderkék), #E8E2FF);
 }
 
 header h1 {
@@ -42,8 +42,8 @@ header p {
 }
 
 .cta-btn {
-  background: var(--sotet);
-  color: var(--vilagos);
+  background: var(--fekete);
+  color: var(--krem);
   border: none;
   padding: 14px 28px;
   border-radius: 14px;
@@ -53,9 +53,9 @@ header p {
 }
 
 .cta-btn.alt {
-  background: var(--vilagos);
-  color: var(--sotet);
-  border: 1px solid var(--sotet);
+  background: var(--krem);
+  color: var(--fekete);
+  border: 1px solid var(--fekete);
 }
 
 section {
@@ -78,41 +78,37 @@ section {
   padding: 28px;
   border-radius: 18px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  cursor: default;
 }
 
-/* LENYITHATÓ KÁRTYÁK */
-.accordion {
+/* Lenyitható kártyák stílusa */
+.card.accordion {
   cursor: pointer;
-  font-weight: bold;
   position: relative;
 }
 
-.accordion::after {
+.card.accordion::after {
   content: "▼";
   position: absolute;
-  right: 0;
+  right: 20px;
+  top: 20px;
 }
 
 .accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
   margin-top: 16px;
-  display: none;
 }
 
-.accordion-content textarea {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid var(--sotet);
-  resize: vertical;
-}
-
-.accordion.open .accordion-content {
-  display: block;
+.card.accordion.open .accordion-content {
+  max-height: 500px; /* tetszőleges */
+  padding-top: 16px;
 }
 
 footer {
-  background: var(--sotet);
-  color: var(--vilagos);
+  background: var(--fekete);
+  color: var(--krem);
   padding: 40px 10%;
   text-align: center;
 }
@@ -124,6 +120,31 @@ footer {
 <header>
   <h1>Modern szállítmányozás, biztos kezekben</h1>
   <p>Belföldi és nemzetközi logisztikai megoldások gyorsan, megbízhatóan, modern rendszerrel.</p>
+
+  <div class="cta-buttons">
+    <button class="cta-btn" onclick="togglePanel('quote')">Árajánlat kérése</button>
+    <button class="cta-btn alt" onclick="togglePanel('time')">Időpont foglalás</button>
+  </div>
+
+  <div id="quote" class="slide-panel">
+    <h3>Árajánlat igénylés</h3>
+    <input placeholder="Név / Cégnév">
+    <input placeholder="Email">
+    <input placeholder="Telefonszám">
+    <input placeholder="Indulási hely">
+    <input placeholder="Érkezési hely">
+    <textarea placeholder="Megjegyzés"></textarea>
+    <button class="cta-btn">Küldés</button>
+  </div>
+
+  <div id="time" class="slide-panel">
+    <h3>Időpont foglalás</h3>
+    <input type="date">
+    <input type="time">
+    <input placeholder="Név">
+    <input placeholder="Email">
+    <button class="cta-btn">Foglalás</button>
+  </div>
 </header>
 
 <section>
@@ -139,28 +160,26 @@ footer {
 <section>
   <h2 class="section-title">Miért minket válasszon?</h2>
   <div class="cards">
-
     <div class="card accordion" onclick="toggleAccordion(this)">
       Modern flottakezelés
       <div class="accordion-content">
-        <textarea placeholder="Ide írj..."></textarea>
+        <!-- Ide írhatod a saját tartalmat -->
       </div>
     </div>
 
     <div class="card accordion" onclick="toggleAccordion(this)">
       Valós idejű nyomon követés
       <div class="accordion-content">
-        <textarea placeholder="Ide írj..."></textarea>
+        <!-- Ide írhatod a saját tartalmat -->
       </div>
     </div>
 
     <div class="card accordion" onclick="toggleAccordion(this)">
       Tapasztalt csapat
       <div class="accordion-content">
-        <textarea placeholder="Ide írj..."></textarea>
+        <!-- Ide írhatod a saját tartalmat -->
       </div>
     </div>
-
   </div>
 </section>
 
@@ -169,6 +188,13 @@ footer {
 </footer>
 
 <script>
+function togglePanel(id) {
+  document.querySelectorAll('.slide-panel').forEach(p => {
+    if (p.id !== id) p.classList.remove('open');
+  });
+  document.getElementById(id).classList.toggle('open');
+}
+
 function toggleAccordion(element) {
   element.classList.toggle("open");
 }
@@ -176,5 +202,3 @@ function toggleAccordion(element) {
 
 </body>
 </html>
-
-
